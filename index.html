@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CaspianCode - Modern software development company delivering innovative digital solutions and cutting-edge technology services.">
+    <meta name="keywords" content="software development, web development, mobile apps, technology solutions, CaspianCode">
+    <meta name="author" content="CaspianCode">
+    <meta property="og:title" content="CaspianCode - Modern Software Development">
+    <meta property="og:description" content="Innovative digital solutions and cutting-edge technology services">
+    <meta property="og:type" content="website">
+    <title>CaspianCode - Modern Software Development</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .background-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #1d4ed8 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .company-name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 50%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)); }
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Added founders section styling */
+        .founders {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+
+        .founders p {
+            color: #64748b;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            margin-top: 4rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .contact-info p {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .email {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .email:hover {
+            color: #1d4ed8;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tagline {
+                margin-bottom: 2rem;
+            }
+            
+            .contact-info {
+                margin-top: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <h1 class="company-name">CaspianCode</h1>
+        
+        <p class="tagline">
+            Crafting innovative digital solutions with cutting-edge technology and modern development practices
+        </p>
+        
+        <!-- Added founders information -->
+        <div class="founders">
+            <p>Founded by Mahammad Tagizade & Ughur Abdullayev</p>
+        </div>
+        
+        <div class="contact-info">
+            <p>Ready to bring your vision to life?</p>
+            <a href="mailto:hello@caspiancode.com" class="email">hello@caspiancode.com</a>
+        </div>
+    </div>
+</body>
+</html>
