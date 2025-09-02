@@ -129,6 +129,17 @@
             color: #2563eb;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            margin: -0.25rem -0.5rem;
+        }
+
+        .founder-name:hover {
+            background: rgba(37, 99, 235, 0.1);
+            color: #1d4ed8;
+            transform: translateX(2px);
         }
 
         /* Services Section */
@@ -420,6 +431,133 @@
             display: none;
         }
 
+        /* Founder Contact Modal Styles */
+        .founder-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .founder-modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .founder-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .founder-modal-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .founder-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+            font-weight: 600;
+        }
+
+        .founder-modal h3 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .founder-modal .founder-title {
+            color: #2563eb;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .founder-contact {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-contact h4 {
+            color: #374151;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .contact-email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .contact-email:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -651,8 +789,9 @@
                     </div>
                     <div class="founders">
                         <h3>Təsisçilər</h3>
-                        <div class="founder-name">Mahammad Tagizade</div>
-                        <div class="founder-name">Ughur Abdullayev</div>
+                        <!-- Founder names are clickable -->
+                        <div class="founder-name" onclick="showFounderModal('mahammad')">Mahammad Tagizade</div>
+                        <div class="founder-name" onclick="showFounderModal('ughur')">Ughur Abdullayev</div>
                     </div>
                 </div>
             </div>
@@ -727,6 +866,23 @@
         </div>
     </footer>
 
+    <!-- Founder Contact Modal -->
+    <div class="founder-modal" id="founderModal">
+        <div class="founder-modal-content">
+            <button class="founder-modal-close" onclick="closeFounderModal()">×</button>
+            <div class="founder-avatar" id="founderAvatar"></div>
+            <h3 id="founderName"></h3>
+            <div class="founder-title">Təsisçi & İdarəçi</div>
+            <div class="founder-contact">
+                <h4>Əlaqə Məlumatları</h4>
+                <a href="#" class="contact-email" id="founderEmail">
+                    <span>📧</span>
+                    <span id="founderEmailText"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Admin Functionality -->
     <script>
         // Admin password (in production, this should be more secure)
@@ -746,6 +902,20 @@
                 { title: 'Bulud Həlləri', desc: 'Bulud infrastrukturu, hosting və məlumat saxlama həlləri təqdim edirik.', icon: '☁️' },
                 { title: 'Texniki Dəstək', desc: '24/7 texniki dəstək və sistem administrasiyası xidmətləri göstəririk.', icon: '🔧' }
             ]
+        };
+
+        // Founder data
+        const founderData = {
+            mahammad: {
+                name: 'Mahammad Tagizade',
+                email: 'mahammad@caspiancode.com',
+                avatar: 'MT'
+            },
+            ughur: {
+                name: 'Ughur Abdullayev', 
+                email: 'ughur@caspiancode.com',
+                avatar: 'UA'
+            }
         };
 
         // Load content on page load
@@ -916,6 +1086,28 @@
                 alert('Portfolio silindi!');
             }
         }
+
+        function showFounderModal(founderId) {
+            const founder = founderData[founderId];
+            if (founder) {
+                document.getElementById('founderName').textContent = founder.name;
+                document.getElementById('founderEmailText').textContent = founder.email;
+                document.getElementById('founderAvatar').textContent = founder.avatar;
+                document.getElementById('founderEmail').href = `https://mail.google.com/mail/?view=cm&fs=1&to=${founder.email}`;
+                document.getElementById('founderModal').style.display = 'flex';
+            }
+        }
+
+        function closeFounderModal() {
+            document.getElementById('founderModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('founderModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFounderModal();
+            }
+        });
 
         // Admin access via URL
         window.addEventListener('hashchange', function() {
