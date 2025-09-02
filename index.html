@@ -282,6 +282,144 @@
             font-size: 0.875rem;
         }
 
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .admin-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 1rem;
+        }
+
+        .admin-close {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+
+        .admin-section h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .admin-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-button:hover {
+            background: #1d4ed8;
+        }
+
+        .admin-button.danger {
+            background: #ef4444;
+        }
+
+        .admin-button.danger:hover {
+            background: #dc2626;
+        }
+
+        .portfolio-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f9fafb;
+        }
+
+        .portfolio-item h4 {
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .admin-login {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            display: none;
+        }
+
+        .admin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            display: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -336,6 +474,16 @@
             .services-flow {
                 animation-duration: 15s;
             }
+
+            .admin-content {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            
+            .admin-login {
+                width: 90%;
+                max-width: 400px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -388,6 +536,93 @@
             </div>
         </div>
     </header>
+
+    <!-- Admin Overlay and Login Modal -->
+    <div class="admin-overlay" id="adminOverlay"></div>
+    <div class="admin-login" id="adminLogin">
+        <h2 style="margin-bottom: 1rem; color: #2563eb;">Admin Girişi</h2>
+        <div class="form-group">
+            <label for="adminPassword">Şifrə:</label>
+            <input type="password" id="adminPassword" placeholder="Admin şifrəsini daxil edin">
+        </div>
+        <button class="admin-button" onclick="checkPassword()">Giriş</button>
+        <button class="admin-button" style="background: #6b7280;" onclick="closeAdminLogin()">Ləğv et</button>
+        <div id="loginError" style="color: #ef4444; margin-top: 1rem; display: none;">Yanlış şifrə!</div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2 style="color: #2563eb;">Admin Panel</h2>
+                <button class="admin-close" onclick="closeAdmin()">Bağla</button>
+            </div>
+
+            <!-- Logo Section -->
+            <div class="admin-section">
+                <h3>Logo Dəyişdir</h3>
+                <div class="form-group">
+                    <label for="logoText">Logo Mətni:</label>
+                    <input type="text" id="logoText" placeholder="CaspianCode">
+                </div>
+                <button class="admin-button" onclick="updateLogo()">Logo Yenilə</button>
+            </div>
+
+            <!-- Mission Statement Section -->
+            <div class="admin-section">
+                <h3>Missiya Bəyanatı</h3>
+                <div class="form-group">
+                    <label for="missionText">Missiya:</label>
+                    <textarea id="missionText" placeholder="Gənc istedadlı kadrla İT sahəsində innovativ yeniliklərə imza atırıq."></textarea>
+                </div>
+                <button class="admin-button" onclick="updateMission()">Missiya Yenilə</button>
+            </div>
+
+            <!-- About Section -->
+            <div class="admin-section">
+                <h3>Haqqımızda Bölməsi</h3>
+                <div class="form-group">
+                    <label for="aboutText">Haqqımızda Mətni:</label>
+                    <textarea id="aboutText" placeholder="Şirkət haqqında məlumat..."></textarea>
+                </div>
+                <button class="admin-button" onclick="updateAbout()">Haqqımızda Yenilə</button>
+            </div>
+
+            <!-- Founders Section -->
+            <div class="admin-section">
+                <h3>Təsisçilər</h3>
+                <div class="form-group">
+                    <label for="founder1">Təsisçi 1:</label>
+                    <input type="text" id="founder1" placeholder="Mahammad Tagizade">
+                </div>
+                <div class="form-group">
+                    <label for="founder2">Təsisçi 2:</label>
+                    <input type="text" id="founder2" placeholder="Ughur Abdullayev">
+                </div>
+                <button class="admin-button" onclick="updateFounders()">Təsisçiləri Yenilə</button>
+            </div>
+
+            <!-- Portfolio Section -->
+            <div class="admin-section">
+                <h3>Portfolio İdarəetməsi</h3>
+                <div id="portfolioList"></div>
+                <h4 style="margin-top: 1.5rem; margin-bottom: 1rem;">Yeni Portfolio Əlavə Et</h4>
+                <div class="form-group">
+                    <label for="portfolioTitle">Başlıq:</label>
+                    <input type="text" id="portfolioTitle" placeholder="Layihə başlığı">
+                </div>
+                <div class="form-group">
+                    <label for="portfolioDesc">Təsvir:</label>
+                    <textarea id="portfolioDesc" placeholder="Layihə təsviri"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="portfolioIcon">İkon (emoji):</label>
+                    <input type="text" id="portfolioIcon" placeholder="🌐" maxlength="2">
+                </div>
+                <button class="admin-button" onclick="addPortfolioItem()">Portfolio Əlavə Et</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -475,7 +710,7 @@
             </div>
         </section>
 
-    <!-- CTA Section -->
+        <!-- CTA Section -->
         <section class="cta">
             <div class="container">
                 <h2>Bizimlə İşləməyə Hazırsınız?</h2>
@@ -491,5 +726,203 @@
             <p>&copy; 2025 CaspianCode. Bütün hüquqlar qorunur.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for Admin Functionality -->
+    <script>
+        // Admin password (in production, this should be more secure)
+        const ADMIN_PASSWORD = 'caspian2025';
+        
+        // Initialize data from localStorage or defaults
+        let siteData = JSON.parse(localStorage.getItem('caspianCodeData')) || {
+            logo: 'CaspianCode',
+            mission: 'Gənc istedadlı kadrla İT sahəsində innovativ yeniliklərə imza atırıq.',
+            about: 'CaspianCode yeni başlayan gənclər üçün nəzərdə tutulmuş IT şirkətidir. Biz gənclərin texnologiya sahəsində təcrübə və gördükləri işin nəticəsi olaraq əməkhaqqı qazanmalarına kömək edirik. Məqsədimiz gənc istedadları dəstəkləyərək onların peşəkar inkişafına töhfə verməkdir.',
+            founders: ['Mahammad Tagizade', 'Ughur Abdullayev'],
+            portfolio: [
+                { title: 'Veb İnkişaf', desc: 'Müasir və responsiv veb saytlar, e-ticarət platformaları və veb tətbiqləri yaradırıq.', icon: '🌐' },
+                { title: 'Mobil Tətbiqlər', desc: 'iOS və Android üçün istifadəçi dostu mobil tətbiqlər hazırlayırıq.', icon: '📱' },
+                { title: 'Rəqəmsal Marketinq', desc: 'SEO, sosial media marketinqi və rəqəmsal reklam strategiyaları təklif edirik.', icon: '📊' },
+                { title: 'UI/UX Dizayn', desc: 'Cəlbedici və funksional istifadəçi interfeysi və təcrübəsi dizayn edirik.', icon: '🎨' },
+                { title: 'Bulud Həlləri', desc: 'Bulud infrastrukturu, hosting və məlumat saxlama həlləri təqdim edirik.', icon: '☁️' },
+                { title: 'Texniki Dəstək', desc: '24/7 texniki dəstək və sistem administrasiyası xidmətləri göstəririk.', icon: '🔧' }
+            ]
+        };
+
+        // Load content on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContent();
+            
+            // Check for admin URL
+            if (window.location.hash === '#admin' || window.location.pathname.includes('/admin')) {
+                showAdminLogin();
+            }
+        });
+
+        function loadContent() {
+            // Update logo
+            document.querySelector('.logo').textContent = siteData.logo;
+            
+            // Update mission
+            document.querySelector('.mission').textContent = siteData.mission;
+            
+            // Update about
+            document.querySelector('.about-text p').textContent = siteData.about;
+            
+            // Update founders
+            const founderElements = document.querySelectorAll('.founder-name');
+            founderElements[0].textContent = siteData.founders[0];
+            founderElements[1].textContent = siteData.founders[1];
+            
+            // Update services
+            updateServicesDisplay();
+        }
+
+        function updateServicesDisplay() {
+            const servicesFlow = document.querySelector('.services-flow');
+            servicesFlow.innerHTML = '';
+            
+            // Create service cards (duplicate for seamless loop)
+            const allServices = [...siteData.portfolio, ...siteData.portfolio.slice(0, 2)];
+            
+            allServices.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${service.title}</h3>
+                    <p>${service.desc}</p>
+                `;
+                servicesFlow.appendChild(card);
+            });
+        }
+
+        function saveData() {
+            localStorage.setItem('caspianCodeData', JSON.stringify(siteData));
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminOverlay').style.display = 'block';
+            document.getElementById('adminLogin').style.display = 'block';
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminOverlay').style.display = 'none';
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                closeAdminLogin();
+                showAdmin();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function showAdmin() {
+            document.getElementById('adminPanel').style.display = 'block';
+            loadAdminData();
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function loadAdminData() {
+            document.getElementById('logoText').value = siteData.logo;
+            document.getElementById('missionText').value = siteData.mission;
+            document.getElementById('aboutText').value = siteData.about;
+            document.getElementById('founder1').value = siteData.founders[0];
+            document.getElementById('founder2').value = siteData.founders[1];
+            loadPortfolioList();
+        }
+
+        function loadPortfolioList() {
+            const portfolioList = document.getElementById('portfolioList');
+            portfolioList.innerHTML = '';
+            
+            siteData.portfolio.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'portfolio-item';
+                div.innerHTML = `
+                    <h4>${item.icon} ${item.title}</h4>
+                    <p>${item.desc}</p>
+                    <button class="admin-button danger" onclick="deletePortfolioItem(${index})">Sil</button>
+                `;
+                portfolioList.appendChild(div);
+            });
+        }
+
+        function updateLogo() {
+            siteData.logo = document.getElementById('logoText').value;
+            saveData();
+            loadContent();
+            alert('Logo yeniləndi!');
+        }
+
+        function updateMission() {
+            siteData.mission = document.getElementById('missionText').value;
+            saveData();
+            loadContent();
+            alert('Missiya yeniləndi!');
+        }
+
+        function updateAbout() {
+            siteData.about = document.getElementById('aboutText').value;
+            saveData();
+            loadContent();
+            alert('Haqqımızda bölməsi yeniləndi!');
+        }
+
+        function updateFounders() {
+            siteData.founders[0] = document.getElementById('founder1').value;
+            siteData.founders[1] = document.getElementById('founder2').value;
+            saveData();
+            loadContent();
+            alert('Təsisçilər yeniləndi!');
+        }
+
+        function addPortfolioItem() {
+            const title = document.getElementById('portfolioTitle').value;
+            const desc = document.getElementById('portfolioDesc').value;
+            const icon = document.getElementById('portfolioIcon').value;
+            
+            if (title && desc && icon) {
+                siteData.portfolio.push({ title, desc, icon });
+                saveData();
+                loadContent();
+                loadPortfolioList();
+                
+                // Clear form
+                document.getElementById('portfolioTitle').value = '';
+                document.getElementById('portfolioDesc').value = '';
+                document.getElementById('portfolioIcon').value = '';
+                
+                alert('Portfolio əlavə edildi!');
+            } else {
+                alert('Bütün sahələri doldurun!');
+            }
+        }
+
+        function deletePortfolioItem(index) {
+            if (confirm('Bu portfolio elementini silmək istədiyinizə əminsiniz?')) {
+                siteData.portfolio.splice(index, 1);
+                saveData();
+                loadContent();
+                loadPortfolioList();
+                alert('Portfolio silindi!');
+            }
+        }
+
+        // Admin access via URL
+        window.addEventListener('hashchange', function() {
+            if (window.location.hash === '#admin') {
+                showAdminLogin();
+            }
+        });
+    </script>
 </body>
 </html>
