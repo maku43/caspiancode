@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CaspianCode - Modern software development company delivering innovative digital solutions and cutting-edge technology services.">
-    <meta name="keywords" content="software development, web development, mobile apps, technology solutions, CaspianCode">
-    <meta name="author" content="CaspianCode">
-    <meta property="og:title" content="CaspianCode - Modern Software Development">
-    <meta property="og:description" content="Innovative digital solutions and cutting-edge technology services">
-    <meta property="og:type" content="website">
-    <title>CaspianCode - Modern Software Development</title>
-    
+    <title>CaspianCode - Gənc İstedadları Gücləndirən IT Şirkəti</title>
     <style>
         * {
             margin: 0;
@@ -20,156 +13,483 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            position: relative;
+            padding: 1rem 0;
         }
 
-        .background-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.03;
-            background-image: 
-                radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, #1d4ed8 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
-        }
-
-        .company-name {
-            font-size: clamp(3rem, 8vw, 6rem);
+        .logo {
+            font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 50%, #1d4ed8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3)); }
-            to { filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)); }
-        }
-
-        .tagline {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: #cbd5e1;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.6;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Added founders section styling */
-        .founders {
-            margin-top: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1s forwards;
-        }
-
-        .founders p {
-            color: #64748b;
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-info {
-            margin-top: 4rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-        }
-
-        .contact-info p {
-            color: #64748b;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .email {
-            color: #3b82f6;
+            color: #2563eb;
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .email:hover {
+        .logo:hover {
             color: #1d4ed8;
         }
 
-        /* Mobile Responsiveness */
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .mission {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .founders {
+            background-color: #f1f5f9;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .founders h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .founder-name {
+            font-size: 1.125rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+            overflow: hidden;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .services-flow {
+            display: flex;
+            animation: flow 20s linear infinite;
+            gap: 2rem;
+            width: calc(100% + 400px);
+        }
+
+        .service-card {
+            min-width: 280px;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        @keyframes flow {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-400px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .services-container {
+            position: relative;
+            mask: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+            -webkit-mask: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: #2563eb;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #2563eb;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 0 1rem;
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .mission {
+                font-size: 1.125rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta p {
+                font-size: 1.125rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .about {
+                padding: 3rem 0;
+            }
+
+            .cta {
+                padding: 3rem 0;
+            }
+
+            .services h2 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                min-width: 250px;
+            }
+
+            .services-flow {
+                animation-duration: 15s;
             }
         }
 
         @media (max-width: 480px) {
-            .tagline {
-                margin-bottom: 2rem;
+            .logo {
+                font-size: 1.75rem;
             }
-            
-            .contact-info {
-                margin-top: 3rem;
+
+            .hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .mission {
+                font-size: 1rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+
+            .services h2 {
+                font-size: 1.75rem;
+            }
+
+            .service-card {
+                min-width: 220px;
+                padding: 1.5rem;
+            }
+
+            .services {
+                padding: 3rem 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="background-pattern"></div>
-    
-    <div class="container">
-        <h1 class="company-name">CaspianCode</h1>
-        
-        <p class="tagline">
-            Code, design, and marketing for growth.
-        </p>
-        
-        <!-- Added founders information -->
-        <div class="founders">
-            <p>Founded by Mahammad Tagizade & Ughur Abdullayev</p>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">CaspianCode</a>
+            </div>
         </div>
-        
-        <div class="contact-info">
-            <p>Ready to bring your vision to life?</p>
-            <a href="mailto:contact@caspiancode.com" class="email">contact@caspiancode.com</a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>CaspianCode</h1>
+                <p class="mission">
+                    Gənc istedadları gücləndirərək keyfiyyətli və yaradıcı IT həlləri təqdim etmək.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Haqqımızda</h2>
+                        <p>
+                            CaspianCode yeni başlayan gənclər üçün nəzərdə tutulmuş IT şirkətidir. 
+                            Biz yeniyetmələrin texnologiya sahəsində təcrübə qazanmalarına və 
+                            komissiya qazanmalarına kömək edirik. Məqsədimiz gənc istedadları 
+                            dəstəkləyərək onların peşəkar inkişafına töhfə verməkdir.
+                        </p>
+                    </div>
+                    <div class="founders">
+                        <h3>Təsisçilər</h3>
+                        <div class="founder-name">Mahammad Taghizade</div>
+                        <div class="founder-name">Ughur Abdullayev</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <h2>Biznes Həllərimiz</h2>
+                <div class="services-container">
+                    <div class="services-flow">
+                        <div class="service-card">
+                            <div class="service-icon">🌐</div>
+                            <h3>Veb İnkişaf</h3>
+                            <p>Müasir və responsiv veb saytlar, e-ticarət platformaları və veb tətbiqləri yaradırıq.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">📱</div>
+                            <h3>Mobil Tətbiqlər</h3>
+                            <p>iOS və Android üçün istifadəçi dostu mobil tətbiqlər hazırlayırıq.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">📊</div>
+                            <h3>Rəqəmsal Marketinq</h3>
+                            <p>SEO, sosial media marketinqi və rəqəmsal reklam strategiyaları təklif edirik.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🎨</div>
+                            <h3>UI/UX Dizayn</h3>
+                            <p>Cəlbedici və funksional istifadəçi interfeysi və təcrübəsi dizayn edirik.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">☁️</div>
+                            <h3>Bulud Həlləri</h3>
+                            <p>Bulud infrastrukturu, hosting və məlumat saxlama həlləri təqdim edirik.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🔧</div>
+                            <h3>Texniki Dəstək</h3>
+                            <p>24/7 texniki dəstək və sistem administrasiyası xidmətləri göstəririk.</p>
+                        </div>
+                        <!-- Duplicate cards for seamless loop -->
+                        <div class="service-card">
+                            <div class="service-icon">🌐</div>
+                            <h3>Veb İnkişaf</h3>
+                            <p>Müasir və responsiv veb saytlar, e-ticarət platformaları və veb tətbiqləri yaradırıq.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">📱</div>
+                            <h3>Mobil Tətbiqlər</h3>
+                            <p>iOS və Android üçün istifadəçi dostu mobil tətbiqlər hazırlayırıq.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Bizimlə İşləməyə Hazırsınız?</h2>
+                <p>Gənc istedadlarla birlikdə innovativ IT həlləri yaradaq</p>
+                <a href="#contact" class="cta-button">Bizimlə Əlaqə</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CaspianCode. Bütün hüquqlar qorunur.</p>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
