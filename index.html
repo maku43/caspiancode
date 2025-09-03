@@ -885,8 +885,8 @@
 
     <!-- JavaScript for Admin Functionality -->
     <script>
-        // Admin password (in production, this should be more secure)
-        const ADMIN_PASSWORD = 'caspian2025';
+        // Admin password hash (in production, this should be more secure)
+        const ADMIN_PASSWORD_HASH = 'a8f5f167f44f4964e6c998dee827110c';
         
         // Initialize data from localStorage or defaults
         let siteData = JSON.parse(localStorage.getItem('caspianCodeData')) || {
@@ -984,7 +984,8 @@
 
         function checkPassword() {
             const password = document.getElementById('adminPassword').value;
-            if (password === ADMIN_PASSWORD) {
+            const hashedInput = simpleHash(password);
+            if (hashedInput === ADMIN_PASSWORD_HASH) {
                 closeAdminLogin();
                 showAdmin();
             } else {
@@ -1115,6 +1116,16 @@
                 showAdminLogin();
             }
         });
+
+        function simpleHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32bit integer
+            }
+            return Math.abs(hash).toString(16);
+        }
     </script>
 </body>
 </html>
